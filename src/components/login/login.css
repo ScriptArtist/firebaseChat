@@ -1,0 +1,40 @@
+.login {
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+    padding: 50px 10px;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.login__title {
+    font-color: #607D8B;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.account-button {
+    background: white;
+    box-shadow: 0px 0px 10px 2px #bfbfbf;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    height: 50px;
+    padding-right: 20px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.account-button__icon {
+    width: 40px;
+    height: 40px;
+    background: url('./google.jpg');
+    background-size: contain;
+    margin-right: 5px;
+}
