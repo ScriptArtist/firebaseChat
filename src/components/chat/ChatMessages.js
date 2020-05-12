@@ -7,15 +7,14 @@ function ChatMessages() {
   useFirestoreConnect([
     { collection: 'users' },
     { collection: 'bots' },
-    { collection: 'messages' },
+    { collection: 'messages', orderBy: ['timestamp', 'desc'] },
   ]);
-  const messages = useSelector((state) => state.firestore.data.messages);
+  const messages = useSelector((state) => state.firestore.ordered.messages);
 
   return (
     <div className="chat">
-      {messages
-      && Object.keys(messages).map((id) => (
-        <ChatMessage key={id} message={messages[id]} />
+      {messages && messages.map((message) => (
+        <ChatMessage key={message.id} message={message} />
       ))}
     </div>
   );
