@@ -5,17 +5,21 @@ import { useSelector } from 'react-redux';
 function ChatForm() {
   const firestore = useFirestore();
   const userId = useSelector((state) => state.firebase.auth.uid);
+  const activeDialog = useSelector((state) => state.chat.activeDialog);
   const [messageText, setMessageText] = useState('');
 
   function submitForm() {
+    if (!activeDialog) return;
+    if (!messageText.length) return;
+
     const message = {
       from_id: `users/${userId}`,
       to_id: 'bots/39i73ih0YpFjUd3p6v9v',
       timestamp: firestore.FieldValue.serverTimestamp(),
       text: messageText,
+      chat_id: `${userId}_${activeDialog}`,
     };
-
-    return firestore.collection('messages').add(message);
+    firestore.collection('messages').add(message);
   }
 
 

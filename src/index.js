@@ -11,7 +11,7 @@ import { createFirestoreInstance } from 'redux-firestore';
 import JavascriptTimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import App from './components/app/App';
-import reducer from './store';
+import reducer from './store/reducers';
 import firebase from './services/firebase';
 
 // Initialize the desired locales.
