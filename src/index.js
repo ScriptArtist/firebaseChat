@@ -7,17 +7,25 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import thunk from 'redux-thunk';
+import { createFirestoreInstance } from 'redux-firestore';
+import JavascriptTimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import App from './components/app/App';
 import reducer from './store';
 import firebase from './services/firebase';
+
+// Initialize the desired locales.
+JavascriptTimeAgo.locale(en);
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 const firebaseProps = {
   firebase,
   config: {
     userProfile: 'users',
+    useFirestoreForProfile: true,
   },
   dispatch: store.dispatch,
+  createFirestoreInstance,
 };
 
 ReactDOM.render(

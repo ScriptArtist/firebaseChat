@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 /**
  * @description Firebase provides the tools and infrastructure to authenticate and manage users
@@ -18,5 +19,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+// Initialize other services
+firebase.firestore();
 
 export default firebase;

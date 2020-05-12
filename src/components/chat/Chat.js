@@ -1,12 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import './chat.css';
 import './chat-block.css';
 import Contacts from '../contacts/Contacts';
+import ChatMessages from './ChatMessages';
 
 function Chat() {
-  const auth = useSelector((state) => state.firebase.auth);
-
   return (
     <div className="chat-wrap">
       <div className="contacts-wrap">
@@ -16,44 +14,7 @@ function Chat() {
       <div className="chat-block">
         <div className="blocked-wrap">
           <div style={{ position: 'relative' }}>
-            <div className="chat">
-              <div className="chat-message">
-                <div className="chat-message-foto">
-                  <a href="/#" label="message-photo"><img src="" alt="" /></a>
-                </div>
-                <div className="chat-message-text">
-                  My name is martin
-                </div>
-                <div className="chat-message-time">2 hours ago</div>
-              </div>
-              <div className="chat-message user-message">
-                <div className="chat-message-foto">
-                  <a href="/#" aria-label="contact user photo"><img src="" alt="" /></a>
-                </div>
-                <div className="chat-message-text">
-                  You are so stupid...
-                </div>
-                <div className="chat-message-time">2 hours ago</div>
-              </div>
-              <div className="chat-message">
-                <div className="chat-message-foto">
-                  <a href="/#" aria-label="contact user photo"><img src="" alt="" /></a>
-                </div>
-                <div className="chat-message-text">
-                  London is the capital of great britain.
-                </div>
-                <div className="chat-message-time">2 hours ago</div>
-              </div>
-              <div className="chat-message user-message">
-                <div className="chat-message-foto">
-                  <a href="/#" aria-label="contact user photo"><img src="" alt="" /></a>
-                </div>
-                <div className="chat-message-text">
-                  Hello, bot
-                </div>
-                <div className="chat-message-time">2 hours ago</div>
-              </div>
-            </div>
+            <ChatMessages />
           </div>
           <div className="chat-form">
             <form action="">
