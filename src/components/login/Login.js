@@ -17,10 +17,10 @@ function Login() {
     <main className="main">
       <div className="container">
         <div className="login">
-          <div className="login__title">Добро пожаловать в chatBot</div>
+          <div className="login__title">Welcome to chatBot</div>
           <button type="button" className="account-button" onClick={loginWithGoogle}>
             <div className="account-button__icon" />
-            Войти через Google
+            Sign in with Google
           </button>
         </div>
       </div>
