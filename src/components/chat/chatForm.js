@@ -14,7 +14,7 @@ function ChatForm() {
 
     const message = {
       from_id: `users/${userId}`,
-      to_id: 'bots/39i73ih0YpFjUd3p6v9v',
+      to_id: `bots/${activeDialog}`,
       timestamp: firestore.FieldValue.serverTimestamp(),
       text: messageText,
       chat_id: `${userId}_${activeDialog}`,
