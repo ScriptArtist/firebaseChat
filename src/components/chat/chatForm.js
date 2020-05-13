@@ -7,6 +7,7 @@ function ChatForm() {
   const userId = useSelector((state) => state.firebase.auth.uid);
   const activeDialog = useSelector((state) => state.chat.activeDialog);
   const [messageText, setMessageText] = useState('');
+  const [enterToSend, setEnterToSend] = useState(true);
 
   function submitForm() {
     if (!activeDialog) return;
@@ -24,7 +25,10 @@ function ChatForm() {
 
 
   function onMessageFormKeyPress(event) {
-    if (event.charCode === 13 && !(event.shiftKey || event.metaKey || event.ctrlKey)) {
+    const isFunctionButtonsPressed = (event.shiftKey || event.metaKey || event.ctrlKey);
+    const isEnterPressed = event.charCode === 13;
+
+    if (isEnterPressed && (enterToSend !== isFunctionButtonsPressed)) {
       event.preventDefault();
       submitForm();
       setMessageText('');
@@ -43,8 +47,8 @@ function ChatForm() {
         </div>
         <div className="textarea-count-wrap">
           <div className="checkbox-wrap">
+            <input id="enterToSend" type="checkbox" checked={enterToSend} onChange={() => { setEnterToSend(!enterToSend); }} />
             <label htmlFor="enterToSend">
-              <input id="enterToSend" type="checkbox" />
               <span />
               Press Enter to send
             </label>
