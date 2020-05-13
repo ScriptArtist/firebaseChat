@@ -7,6 +7,7 @@ function ChatMessage({ message }) {
   const data = useSelector((state) => state.firestore.data);
   const userId = useSelector((state) => state.firebase.auth.uid);
   const isUserMessage = `users/${userId}` === message.from_id;
+  const user = getUser(message.from_id);
 
   function getUser(path) {
     const userPath = path.split('/');
@@ -17,7 +18,7 @@ function ChatMessage({ message }) {
     <div className={`chat-message ${isUserMessage ? 'user-message' : ''}`}>
       <div className="chat-message-foto">
         <a href="/#" label="message-photo">
-          <img src={getUser(message.from_id).avatarUrl} alt="" />
+          {user && <img src={user.avatarUrl} alt="" />}
         </a>
       </div>
       <div className="chat-message-text">
